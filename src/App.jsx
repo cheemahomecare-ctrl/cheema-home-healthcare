@@ -897,7 +897,7 @@ function AdminDashboard({ bookings, loading, error, updateBooking, nurses, addNu
                   {s}
                 </button>
               ))}
-              <WhatsAppButton phone={PLACEHOLDER_PHONE_WA} text={confirmText(b)} style={{ padding: "6px 12px", fontSize: 12.5 }}>
+              <WhatsAppButton phone={formatPhoneforWa(b.phone)} text={confirmText(b)} style={{ padding: "6px 12px", fontSize: 12.5 }}>
                 Send WhatsApp confirmation
               </WhatsAppButton>
             </div>
