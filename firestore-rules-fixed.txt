@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Anyone can CREATE a booking (patients booking from the public site,
+    // who are not logged in). Only a logged-in admin can read the list,
+    // update status, or delete bookings.
+    match /bookings/{bookingId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+    // Only a logged-in admin can manage nurses.
+    match /nurses/{nurseId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
