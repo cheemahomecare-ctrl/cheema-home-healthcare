@@ -30,18 +30,19 @@ const NURSING_SERVICES = [
 ];
 
 const STATUS_FLOW = ["New", "Confirmed", "Completed", "Cancelled"];
-const STATUS_COLOR = };function formatPhoneForWa(phone) {
-  let digits = (phone || "").replace(/\D/g, "");
-  if (digits.startsWith("0")) digits = "91" + digits.slice(1);
-  else if (digits.length === 10) digits = "91" + digits;
-  return digits;
+const STATUS_COLOR = {
 }
   New: "#C5704B",
   Confirmed: "#6E8F73",
   Completed: "#14463D",
   Cancelled: "#9A8F7E",
 };
-
+function formatPhoneForWa(phone) {
+  let digits = (phone || "").replace(/\D/g, "");
+  if (digits.startsWith("0")) digits = "91" + digits.slice(1);
+  else if (digits.length === 10) digits = "91" + digits;
+  return digits;
+}
 /* ---------------- Firestore-backed collection hook ---------------- */
 
 function useCollection(name) {
@@ -897,7 +898,7 @@ function AdminDashboard({ bookings, loading, error, updateBooking, nurses, addNu
                   {s}
                 </button>
               ))}
-              <WhatsAppButton phone={formatPhoneforWa(b.phone)} text={confirmText(b)} style={{ padding: "6px 12px", fontSize: 12.5 }}>
+              <WhatsAppButton phone={FormatPhoneForWa(b.phone)} text={confirmText(b)} style={{ padding: "6px 12px", fontSize: 12.5 }}>
                 Send WhatsApp confirmation
               </WhatsAppButton>
             </div>
